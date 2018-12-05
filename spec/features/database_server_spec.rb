@@ -2,10 +2,15 @@
 
 require 'spec_helper'
 
-feature 'setting key value pairs' do
-  scenario 'user can write in their key value pair' do
-    visit '/set?test_key=test_value'
+feature 'can view index page' do
+  scenario 'user can visit home' do
+    visit '/'
+    expect(page).to have_content("HI!!!!!!!")
+  end
+  scenario 'user can enter a key value pair directly into URL query string' do
+    visit '/set?Hi=greeting'
+    visit '/get?key=Hi'
     expect(page.status_code).to eq 200
-    expect(page).to have_content('You saved {"test_key"=>"test_value"}')
+    expect(page).to have_content('greeting')
   end
 end

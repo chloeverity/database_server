@@ -3,10 +3,11 @@
 require 'sinatra/base'
 
 class DatabaseServer < Sinatra::Base
+  enable :sessions
   set :port, 4000
   get '/' do
-    'WOO THIS IS A DATABASE SERVER'
+    erb :index
   end
 
-  run! if app_file == $0
+  run! if app_file == $PROGRAM_NAME
 end
