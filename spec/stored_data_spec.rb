@@ -18,4 +18,10 @@ describe StoredData do
     data.set_data(mykey, myvalue)
     expect(data.get_data(mykey)).to equal myvalue
   end
+
+  it 'can return a hash of all the data' do
+    data.set_data(mykey, myvalue)
+    expect(data.data.keys.first).to equal mykey
+    expect(data.data.values.first).to equal myvalue
+  end
 end
