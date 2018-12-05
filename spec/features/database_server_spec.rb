@@ -5,7 +5,7 @@ require 'spec_helper'
 feature 'can view index page' do
   scenario 'user can visit home' do
     visit '/'
-    expect(page).to have_content("HI!!!!!!!")
+    expect(page).to have_content('HI!!!!!!!')
   end
   scenario 'user can enter a key value pair directly into URL query string' do
     visit '/set?Hi=greeting'
