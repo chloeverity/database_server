@@ -9,4 +9,6 @@ group :test do
   gem 'capybara'
   gem 'rspec'
   gem 'rspec-sinatra'
+  gem 'simplecov'
+  gem 'simplecov-console'
 end
