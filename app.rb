@@ -4,7 +4,6 @@ require 'sinatra/base'
 require_relative 'stored_data.rb'
 
 class DatabaseServer < Sinatra::Base
-  enable :sessions
   set :port, 4000
   get '/' do
     erb :index
@@ -12,15 +11,12 @@ class DatabaseServer < Sinatra::Base
 
   get '/set' do
     parameters = request.query_string.split('=')
-    session[:key] = parameters[0]
-    session[:value] = parameters[1]
-    session[:data] = StoredData.new
-    session[:data].set_data(session[:key], session[:value])
-    redirect('/get')
+    StoredData.set_data(parameters[0], parameters[1])
   end
 
   get '/get' do
-    session[:value]
+    parameters = request.query_string.split('=')
+    StoredData.get_data(parameters[1])
   end
   run! if app_file == $PROGRAM_NAME
 end
